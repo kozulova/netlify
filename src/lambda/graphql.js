@@ -17,7 +17,10 @@ const resolvers = {
 
 const server = new ApolloServer({
   typeDefs,
-  resolvers
+  resolvers,
+  context: ({res}) => {
+    res.header('key', 'value')
+  }
 });
 
 exports.handler = server.createHandler();
