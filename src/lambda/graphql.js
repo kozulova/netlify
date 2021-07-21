@@ -18,9 +18,14 @@ const resolvers = {
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  context: ({res}) => {
-    res.header('key', 'value')
-  }
+  plugins: [
+    {
+      requestDidStart(requestContext) {
+        console.log('REQUEST START');
+        requestContext.response.http.headers.set('Has-Errors', '1');
+      }
+    }
+  ]
 });
 
 exports.handler = server.createHandler();
