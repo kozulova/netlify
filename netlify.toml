@@ -5,4 +5,4 @@
 [[headers]]
   for = "/*"
   [headers.values]
-    Test = 'Test1'
+    Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
